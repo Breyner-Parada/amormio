@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "start": "astro"
+    "astro": "astro",
+    "start": "astro preview --host 0.0.0.0 --port 4321"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
