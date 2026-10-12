@@ -1,0 +1,33 @@
+---
+import Heart from './Heart.astro';
+import { config } from '../data/config';
+---
+
+<section id="historia" class="mx-auto max-w-4xl px-6 py-28">
+	<h2 data-reveal class="font-display text-center text-4xl font-bold md:text-5xl">
+		Nuestra <span class="text-gradient font-script text-6xl md:text-7xl">historia</span>
+	</h2>
+
+	<div class="relative mt-20">
+		<div class="absolute top-0 bottom-0 left-4 w-px bg-gradient-to-b from-rose-soft via-rose-love to-rose-soft md:left-1/2"></div>
+		{
+			config.story.map((item, i) => (
+				<div class:list={['relative mb-16 pl-14 md:w-1/2 md:pl-0', i % 2 === 0 ? 'md:pr-14 md:text-right' : 'md:ml-auto md:pl-14']}>
+					<span
+						class:list={[
+							'absolute top-2 left-0 grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg md:left-auto',
+							i % 2 === 0 ? 'md:-right-[18px]' : 'md:-left-[18px]',
+						]}
+					>
+						<Heart class="h-5 w-5 text-rose-love" />
+					</span>
+					<div data-reveal-side={i % 2 === 0 ? 'left' : 'right'} class="glass rounded-3xl p-6">
+						<p class="font-script text-2xl text-rose-love">{item.date}</p>
+						<h3 class="font-display mt-1 text-2xl font-bold">{item.title}</h3>
+						<p class="mt-2 leading-relaxed font-light text-wine/80">{item.text}</p>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>

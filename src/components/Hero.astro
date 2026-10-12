@@ -1,0 +1,25 @@
+---
+import { config } from '../data/config';
+
+// Los emojis no se pueden pintar con degradado (se deforman), así que van aparte
+const emojiTail = /[\p{Extended_Pictographic}️‍\s]+$/u;
+const nameText = config.name.replace(emojiTail, '');
+const nameEmoji = config.name.slice(nameText.length).trim();
+---
+
+<section id="hero" class="relative flex min-h-svh flex-col items-center justify-center px-6 text-center">
+	<p data-hero class="font-script text-3xl text-rose-deep md:text-4xl">{config.hero.eyebrow}</p>
+	<h1 data-hero class="font-display mt-2 text-6xl leading-tight font-bold md:text-8xl">
+		<span class="text-gradient">{nameText}</span>
+		{nameEmoji && <span class="ml-2 inline-block text-5xl md:text-7xl">{nameEmoji}</span>}
+	</h1>
+	<p data-hero class="mt-6 max-w-xl text-lg font-light text-wine/80 md:text-xl">{config.hero.subtitle}</p>
+	<a
+		data-hero
+		href="#historia"
+		class="absolute bottom-10 flex flex-col items-center gap-2 text-sm tracking-widest text-rose-deep/70 uppercase"
+	>
+		Desliza
+		<span id="scroll-cue" class="block h-10 w-px bg-gradient-to-b from-rose-love to-transparent"></span>
+	</a>
+</section>

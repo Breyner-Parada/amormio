@@ -1,0 +1,31 @@
+---
+import Heart from './Heart.astro';
+import { config } from '../data/config';
+
+const { greeting, paragraphs, closing } = config.letter;
+---
+
+<section id="carta" class="mx-auto max-w-3xl px-4 py-28 sm:px-6">
+	<h2 data-reveal class="font-display text-center text-4xl font-bold md:text-5xl">
+		Una carta <span class="text-gradient font-script text-6xl md:text-7xl">para ti</span>
+	</h2>
+
+	<div id="letter-paper" class="letter-paper relative mt-20 rounded-2xl px-7 py-14 sm:px-14 sm:py-16">
+		<span
+			class="absolute -top-7 left-1/2 grid h-14 w-14 -translate-x-1/2 place-items-center rounded-full bg-gradient-to-br from-rose-love to-rose-deep text-white shadow-lg"
+		>
+			<Heart class="h-7 w-7" />
+		</span>
+
+		<p data-type class="font-script text-4xl text-rose-deep">{greeting}</p>
+		{
+			paragraphs.map((text) => (
+				<p data-type class="font-script mt-6 text-[1.6rem] leading-[1.75] text-wine/90 sm:text-3xl sm:leading-[1.8]">
+					{text}
+				</p>
+			))
+		}
+		<p data-type class="font-script mt-10 text-3xl text-rose-deep sm:text-4xl">{closing}</p>
+		<p data-type class="font-script mt-2 text-4xl text-rose-love sm:text-5xl">{config.from}</p>
+	</div>
+</section>

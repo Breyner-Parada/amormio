@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+@theme {
+	--color-blush-50: #fff5f7;
+	--color-blush-100: #ffe8ee;
+	--color-blush-200: #ffd0dc;
+	--color-rose-soft: #f6a5b9;
+	--color-rose-love: #e5486f;
+	--color-rose-deep: #b3204a;
+	--color-wine: #4a1429;
+	--color-gold: #e8c39a;
+
+	--font-display: "Playfair Display", Georgia, serif;
+	--font-script: "Dancing Script", cursive;
+	--font-sans: "Inter", system-ui, sans-serif;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+html.locked,
+html.locked body {
+	overflow: hidden;
+	height: 100%;
+}
+
+/* Bloquea el scroll sin encoger la página, para conservar la posición al cerrar la foto */
+html.lb-open {
+	overflow: hidden;
+}
+
+html {
+	scrollbar-gutter: stable;
+}
+
+body {
+	font-family: var(--font-sans);
+	color: var(--color-wine);
+	background:
+		radial-gradient(60rem 40rem at 10% -10%, #ffe1ea 0%, transparent 60%),
+		radial-gradient(50rem 40rem at 100% 20%, #ffd9e4 0%, transparent 55%),
+		linear-gradient(180deg, #fff5f7 0%, #ffeef2 100%);
+	background-attachment: fixed;
+}
+
+.text-gradient {
+	background: linear-gradient(120deg, var(--color-rose-love), var(--color-rose-deep) 55%, #f08aa5);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.glass {
+	background: rgb(255 255 255 / 0.6);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	border: 1px solid rgb(255 255 255 / 0.8);
+	box-shadow: 0 20px 50px -20px rgb(179 32 74 / 0.25);
+}
+
+/* ---------- Sobre ---------- */
+.envelope {
+	position: relative;
+	width: min(86vw, 440px);
+	aspect-ratio: 3 / 2;
+	perspective: 1200px;
+	cursor: pointer;
+	filter: drop-shadow(0 30px 40px rgb(179 32 74 / 0.35));
+	-webkit-tap-highlight-color: transparent;
+}
+
+.envelope > * {
+	position: absolute;
+}
+
+.env-back {
+	inset: 0;
+	background: linear-gradient(160deg, #f7b6c6, #ee8fa9);
+	border-radius: 10px;
+	z-index: 0;
+}
+
+.env-letter {
+	left: 6%;
+	right: 6%;
+	top: 8%;
+	height: 86%;
+	background: linear-gradient(180deg, #fffdf9, #fff4ea);
+	border-radius: 6px;
+	z-index: 2;
+	display: grid;
+	place-items: center;
+	text-align: center;
+	box-shadow: 0 2px 10px rgb(0 0 0 / 0.08);
+}
+
+.env-front {
+	inset: 0;
+	z-index: 3;
+	border-radius: 10px;
+	background: linear-gradient(200deg, #f9c3d0, #f08aa5);
+	clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%);
+}
+
+.env-flap {
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 56%;
+	z-index: 4;
+	transform-origin: top center;
+	background: linear-gradient(180deg, #f4a0b6, #ea7c9a);
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+	border-radius: 10px 10px 0 0;
+}
+
+.env-seal {
+	left: 50%;
+	top: 56%;
+	width: 22%;
+	translate: -50% -50%;
+	z-index: 5;
+	filter: drop-shadow(0 6px 10px rgb(120 10 40 / 0.45));
+}
+
+/* ---------- Polaroids ---------- */
+.polaroid {
+	background: #fff;
+	padding: 0.75rem 0.75rem 1rem;
+	box-shadow: 0 18px 40px -18px rgb(179 32 74 / 0.45);
+	transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
+}
+
+.polaroid:hover {
+	transform: rotate(0deg) scale(1.05) !important;
+	box-shadow: 0 28px 55px -18px rgb(179 32 74 / 0.55);
+	z-index: 10;
+}
+
+.polaroid-static {
+	background: #fff;
+	padding: 0.75rem 0.75rem 1rem;
+	border-radius: 2px;
+	box-shadow: 0 30px 70px -20px rgb(0 0 0 / 0.55);
+}
+
+/* ---------- Carta ---------- */
+.letter-paper {
+	background:
+		radial-gradient(40rem 20rem at 0% 0%, rgb(255 226 234 / 0.55), transparent 60%),
+		linear-gradient(180deg, #fffdf8, #fff5ea);
+	box-shadow:
+		0 30px 60px -25px rgb(179 32 74 / 0.4),
+		inset 0 0 0 1px rgb(232 195 154 / 0.5);
+}
+.letter-paper::before {
+	content: '';
+	position: absolute;
+	inset: 10px;
+	border: 1.5px dashed rgb(229 72 111 / 0.3);
+	border-radius: 12px;
+	pointer-events: none;
+}
+.type-word {
+	display: inline-block;
+	white-space: nowrap;
+}
+.type-char {
+	opacity: 0;
+}
+
+/* ---------- Fondo ambiental ---------- */
+.glow {
+	position: absolute;
+	border-radius: 9999px;
+	filter: blur(70px);
+	opacity: 0.55;
+	will-change: transform;
+}
+.glow-a {
+	width: 28rem;
+	height: 28rem;
+	left: -8rem;
+	top: 10%;
+	background: radial-gradient(circle, #ffb3c6, transparent 70%);
+}
+.glow-b {
+	width: 32rem;
+	height: 32rem;
+	right: -10rem;
+	top: 45%;
+	background: radial-gradient(circle, #ff9ab5, transparent 70%);
+}
+.glow-c {
+	width: 24rem;
+	height: 24rem;
+	left: 30%;
+	top: 80%;
+	background: radial-gradient(circle, #ffd6a5, transparent 70%);
+	opacity: 0.4;
+}
+
+/* ---------- Botón de música (ecualizador) ---------- */
+.music-bar {
+	height: 100%;
+	transform-origin: bottom;
+	animation: music-bounce 1s ease-in-out infinite;
+}
+.music-bar:nth-child(2) { animation-delay: -0.3s; }
+.music-bar:nth-child(3) { animation-delay: -0.6s; }
+.music-bar:nth-child(4) { animation-delay: -0.15s; }
+
+.is-paused .music-bar {
+	animation: none;
+	transform: scaleY(0.25);
+}
+
+@keyframes music-bounce {
+	0%, 100% { transform: scaleY(0.3); }
+	50% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}

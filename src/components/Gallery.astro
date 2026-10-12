@@ -1,0 +1,44 @@
+---
+import Heart from './Heart.astro';
+import { config } from '../data/config';
+
+const tilts = [-3, 2, 3, -2, 1.5, -1.5];
+---
+
+<section id="fotos" class="mx-auto max-w-6xl px-6 py-28">
+	<h2 data-reveal class="font-display text-center text-4xl font-bold md:text-5xl">
+		Nuestros <span class="text-gradient font-script text-6xl md:text-7xl">momentos</span>
+	</h2>
+	<p data-reveal class="mx-auto mt-4 max-w-lg text-center font-light text-wine/70">
+		Cada foto, un pedacito de mi corazón. Toca una para verla en grande.
+	</p>
+
+	<div class="mt-16 grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-10">
+		{
+			config.photos.map((photo, i) => (
+				<figure
+					data-photo
+					data-tilt={tilts[i % tilts.length]}
+					data-src={photo.src ?? undefined}
+					data-caption={photo.caption}
+					role={photo.src ? 'button' : undefined}
+					tabindex={photo.src ? 0 : undefined}
+					aria-label={photo.src ? `Ampliar foto: ${photo.caption}` : undefined}
+					class:list={['polaroid', photo.src && 'cursor-zoom-in', i % 2 ? 'md:mt-10' : '']}
+				>
+					<div class="aspect-[4/5] w-full overflow-hidden bg-gradient-to-br from-blush-100 to-blush-200">
+						{photo.src ? (
+							<img src={photo.src} alt={photo.caption} loading="lazy" class="h-full w-full object-cover" />
+						) : (
+							<div class="flex h-full w-full flex-col items-center justify-center gap-2 text-rose-soft">
+								<Heart class="h-10 w-10" />
+								<span class="font-script text-xl text-rose-deep/70">Tu foto aquí</span>
+							</div>
+						)}
+					</div>
+					<figcaption class="font-script mt-3 text-center text-xl text-rose-deep">{photo.caption}</figcaption>
+				</figure>
+			))
+		}
+	</div>
+</section>

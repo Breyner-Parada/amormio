@@ -1,0 +1,13 @@
+---
+import Heart from './Heart.astro';
+import { config } from '../data/config';
+---
+
+<section id="final" class="relative px-6 pt-28 pb-32 text-center">
+	<Heart id="final-heart" class="mx-auto h-28 w-28 drop-shadow-xl md:h-36 md:w-36" gradient />
+	<h2 data-reveal class="text-gradient font-script mt-8 text-7xl md:text-9xl">{config.final.title}</h2>
+	<p data-reveal class="mx-auto mt-6 max-w-xl text-lg leading-relaxed font-light text-wine/80">
+		{config.final.message}
+	</p>
+	<p data-reveal class="font-script mt-10 text-3xl text-rose-deep">Siempre tuyo, {config.from} 💕</p>
+</section>

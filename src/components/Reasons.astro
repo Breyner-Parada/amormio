@@ -1,0 +1,26 @@
+---
+import Heart from './Heart.astro';
+import { config } from '../data/config';
+---
+
+<section id="razones" class="mx-auto max-w-5xl px-6 py-28">
+	<h2 data-reveal class="font-display text-center text-4xl font-bold md:text-5xl">
+		Razones por las que <span class="text-gradient font-script text-6xl md:text-7xl">te amo</span>
+	</h2>
+
+	<div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+		{
+			config.reasons.map((reason, i) => (
+				<div data-reason class="glass group rounded-3xl p-7 transition-transform duration-300 hover:-translate-y-2">
+					<div class="mb-4 flex items-center gap-3">
+						<span class="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-rose-soft to-rose-love text-white">
+							<Heart class="h-5 w-5" />
+						</span>
+						<span class="font-script text-3xl text-rose-love">{String(i + 1).padStart(2, '0')}</span>
+					</div>
+					<p class="leading-relaxed font-light">{reason}</p>
+				</div>
+			))
+		}
+	</div>
+</section>

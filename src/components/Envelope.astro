@@ -1,0 +1,26 @@
+---
+import Heart from './Heart.astro';
+import { config } from '../data/config';
+---
+
+<div
+	id="intro"
+	class="fixed inset-0 z-50 flex flex-col items-center justify-center gap-10 overflow-hidden bg-gradient-to-b from-blush-100 via-blush-50 to-blush-200"
+>
+	<div id="intro-hearts" class="pointer-events-none absolute inset-0"></div>
+
+	<button id="envelope" class="envelope border-0 bg-transparent p-0" aria-label="Abrir el sobre">
+		<div class="env-back"></div>
+		<div class="env-letter" id="env-letter">
+			<div class="px-4">
+				<Heart class="mx-auto mb-2 h-6 w-6 text-rose-love" />
+				<p class="font-script text-3xl text-rose-deep">{config.letterText}</p>
+			</div>
+		</div>
+		<div class="env-front"></div>
+		<div class="env-flap" id="env-flap"></div>
+		<Heart class="env-seal text-rose-love" gradient id="env-seal" />
+	</button>
+
+	<p id="intro-hint" class="font-script text-3xl text-rose-deep">{config.envelopeHint}</p>
+</div>

@@ -1,0 +1,20 @@
+---
+import { config } from '../data/config';
+---
+
+<audio id="bg-music" src={config.music.src} data-volume={config.music.volume} loop preload="auto"></audio>
+
+<button
+	id="music-toggle"
+	type="button"
+	aria-label="Pausar música"
+	aria-pressed="true"
+	class="glass fixed right-5 bottom-5 z-40 hidden h-12 w-12 items-center justify-center rounded-full text-rose-love opacity-0 transition-transform hover:scale-110 active:scale-95"
+>
+	<span id="music-bars" class="flex h-5 items-end gap-[3px]">
+		<i class="music-bar block w-[3px] rounded-full bg-current"></i>
+		<i class="music-bar block w-[3px] rounded-full bg-current"></i>
+		<i class="music-bar block w-[3px] rounded-full bg-current"></i>
+		<i class="music-bar block w-[3px] rounded-full bg-current"></i>
+	</span>
+</button>
